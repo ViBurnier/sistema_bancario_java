@@ -2,18 +2,17 @@ package banco;
 
 import org.mindrot.jbcrypt.BCrypt;
 
-import java.util.Arrays;
 import java.util.Objects;
 
 public class Register {
     /// Array lista base.
     private static String[][] listClient = {};
-
+    private static int id = 0;
     private static String name;
     private static String password;
 
     /// recebe o registro de usuário
-    public void registerUser(String name, String password){
+    public void register(String name, String password){
         /// verifica se os campos estão vazios.
         if(Objects.equals(name, " ") || Objects.equals(name, "") || password.length() < 6){
             throw new IllegalArgumentException("A senha deve ter no mínimo 6 caracteres!");
@@ -25,6 +24,10 @@ public class Register {
             saveUser();
         }
     };
+
+    public static int generateID() {
+        return ++id; // Incrementa e retorna o novo ID
+    }
 
     /// criptografa a senha (BCrypt)
     private static String hashing(String password){
@@ -55,7 +58,7 @@ public class Register {
             /// cria um novo array para o novo usuário.
             String[] newUser;
             /// array novo usuário recebe nome e a senha criptografada do usuário.
-            newUser = new String[]{name, hashing(password)};
+            newUser = new String[]{name, hashing(password), String.valueOf(generateID())};
             /// método recebe novo array e O método newArray().
             addListClient(newUser, newArray());
         }
@@ -91,15 +94,7 @@ public class Register {
         listClient = r_listClient;
     }
 
-    public static String[][] getListClient() {
+    public static String[][] getList() {
         return listClient;
-    }
-
-    public static void main(String[] args) {
-        Register b = new Register();
-        b.registerUser("Vitor", "123123");
-        b.registerUser("Ana", "141312");
-        b.registerUser("Carlos", "512512");
-        System.out.println(Arrays.deepToString(getListClient()));
     }
 }
