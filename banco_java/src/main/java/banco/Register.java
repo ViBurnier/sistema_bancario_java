@@ -1,21 +1,19 @@
 package banco;
 
 import org.mindrot.jbcrypt.BCrypt;
-
 import java.util.Objects;
 
 public class Register {
     /// Array lista base.
     private static String[][] listClient = {};
     private static int id = 0;
-    private static String name;
-    private static String password;
+    private static String name, password;
 
     /// recebe o registro de usuário
     public void register(String name, String password){
         /// verifica se os campos estão vazios.
-        if(Objects.equals(name, " ") || Objects.equals(name, "") || password.length() < 6){
-            throw new IllegalArgumentException("A senha deve ter no mínimo 6 caracteres!");
+        if(Objects.equals(name, " ") || Objects.equals(name, "") || password.length() != 6){
+            throw new IllegalArgumentException("A senha deve ter 6 caracteres e o nome desse ser valido!");
         }
         else{
             ///saveUser salva o usuário, passando name e password.
