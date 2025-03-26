@@ -10,14 +10,19 @@ import java.util.Objects;
 /// operações de Saque, Depósito e Saldo Disponível.
 public class Bank extends Login{
 
+
+
+
     public static void main(String[] args) {
-        Register r = new Register();
-        r.register("Vitor", "123123");
-        r.register("Ana", "321321");
-        Login l = new Login();
-        l.login("Vitor", "123123");
-        ///System.out.println(Arrays.deepToString(getList()));
-        System.out.println(getBank_balance());
+                Register r = new Register();
+                r.register("Vitor", "123123");
+                r.register("Ana", "321321");
+                r.register("Alex", "456456");
+                Login l = new Login();
+                l.login("Ana", "321312");
+
+
+
     }
 
 }
