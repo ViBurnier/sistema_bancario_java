@@ -2,18 +2,30 @@ package teste;
 
 import java.util.Scanner;
 
+import java.util.HashMap;
+
 public class MapHash {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in); // Inicializa o Scanner
+        // Criando um HashMap
+        HashMap<Integer, String> map = new HashMap<>();
 
-        System.out.println("Qual é o seu nome?"); // Exibe a pergunta
-        String nome = scanner.nextLine(); // Aguarda a resposta do usuário
+        // Adicionando pares chave-valor
+        map.put(1, "Maçã");
+        map.put(2, "Banana");
+        map.put(3, "Laranja");
 
-        System.out.println("Olá, " + nome + "! Qual é a sua idade?");
-        int idade = scanner.nextInt(); // Aguarda a resposta do usuário para um número
+        map.remove(1);
+        map.put(1, "Relogio");
+        // Acessando valores pelo índice (chave)
+        System.out.println("Valor na chave 2: " + map.get(2)); // Banana
 
-        System.out.println("Obrigado! Você escolheu o caminho baseado nas respostas.");
-        scanner.close(); // Fecha o Scanner (boa prática)
+        // Removendo um par pela chave
+
+
+        // Iterando sobre o Map
+        for (Integer chave : map.keySet()) {
+            System.out.println("Chave: " + chave + ", Valor: " + map.get(chave));
+        }
     }
 }
 
