@@ -11,25 +11,34 @@ import java.util.Objects;
 
 public class Login extends Register{
     private String name, password;
+
     ArrayList<ArrayList<Double>> listLog = new ArrayList<>();
+    ArrayList<Double> subArray = new ArrayList<>();
+    
     HashMap<String, Double> conta = new HashMap<>();
 
     private void bank_balance(String id){
-        //verificar se o ID e maior que listlog.size
-        //se for cria um novo array para esse usuario
+        //verifica se o id ja esta no listLog
+        //se nao estiver criar um novo array para esse usuario
 
-        //id e string tenho que converter.
+        double idNew = Double.parseDouble(return_id());
 
-        int idNew = Integer.parseInt(id);
+        //preciso criar um novo array caso o id nao exista dentro do listLog
+        for (ArrayList<Double> client : listLog) {
+            if(idNew == client.get(0)){
+                System.out.println("ACHOU O USER");
+            }
 
-        ArrayList<Double> subArray = new ArrayList<>();
-
-        if(idNew > listLog.size()){
-            subArray.add(2.1);
-            subArray.add(5.32);
-            listLog.add(subArray);
-            System.out.println(listLog);
         }
+
+
+
+//        if(idNew > listLog.size()){
+//            subArray.add(idNew);
+//            subArray.add(create_map());
+//            listLog.add(subArray);
+//            System.out.println(listLog);
+//        }
 
     }
 

@@ -19,13 +19,11 @@ public class Bank extends Login{
                 r.register("Ana", "321321");
                 r.register("Alex", "456456");
 
-
+        System.out.println(Arrays.deepToString(getList()));
                 Login l = new Login();
                 l.login("Ana", "321321");
 
-
                 l.login("Vitor", "123123");
-
 
     }
 

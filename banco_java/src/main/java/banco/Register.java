@@ -6,7 +6,7 @@ import java.util.Objects;
 public class Register {
     /// Array lista base.
     private static String[][] listClient = {};
-    private static int id = 0;
+    private static double id = 0.0;
     private static String name, password;
 
     /// recebe o registro de usuário
@@ -23,7 +23,7 @@ public class Register {
         }
     };
 
-    public static int generateID() {
+    public static double generateID() {
         return ++id; // Incrementa e retorna o novo ID
     }
 
