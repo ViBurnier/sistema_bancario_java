@@ -67,7 +67,6 @@ public class Register {
     private static void addListClient(String[] newUser, String[][] newArray){
         /// depois do método newArray() executado, recebe novo usuário.
         newArray[listClient.length] = newUser;
-
         /// atualiza a lista mandando o novo array com o novo usuário.
         update_listClient(newArray);
     }

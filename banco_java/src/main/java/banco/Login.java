@@ -10,35 +10,36 @@ import java.util.Objects;
 /// de acordo com a chave de login, return bank_balance
 
 public class Login extends Register{
-    private String name, password;
+    public String name, password;
 
-    ArrayList<ArrayList<Double>> listLog = new ArrayList<>();
-    ArrayList<Double> subArray = new ArrayList<>();
-    
+    static ArrayList<ArrayList<Double>> listLog = new ArrayList<>();
+
     HashMap<String, Double> conta = new HashMap<>();
+
+            ArrayList<Double> subArray = new ArrayList<>();
+
 
     private void bank_balance(String id){
         //verifica se o id ja esta no listLog
         //se nao estiver criar um novo array para esse usuario
 
-        double idNew = Double.parseDouble(return_id());
+        double idNew = Double.parseDouble(id);
 
-        //preciso criar um novo array caso o id nao exista dentro do listLog
-        for (ArrayList<Double> client : listLog) {
-            if(idNew == client.get(0)){
-                System.out.println("ACHOU O USER");
+        boolean idExiste = false;
+
+        for(ArrayList<Double> subArray : listLog){
+            if(!subArray.isEmpty() && subArray.get(0) == idNew){
+                idExiste = true;
+                break;
             }
-
         }
 
-
-
-//        if(idNew > listLog.size()){
-//            subArray.add(idNew);
-//            subArray.add(create_map());
-//            listLog.add(subArray);
-//            System.out.println(listLog);
-//        }
+        if (!idExiste) {
+            ArrayList<Double> novoSubArray = new ArrayList<>();
+            novoSubArray.add(idNew); // Adiciona o ID ao novo sub-array
+            novoSubArray.add(create_map()); // Adiciona o saldo inicial ao sub-array
+            listLog.add(novoSubArray); // Adiciona o novo sub-array ao array pai
+        }
 
     }
 
@@ -66,7 +67,7 @@ public class Login extends Register{
 
         for (String[] client : getList()) {
 
-            if (BCrypt.checkpw(password, client[1])) {
+            if (Objects.equals(client[0], name) && BCrypt.checkpw(password, client[1])) {
                 id_permission = client[2];
                 break;
             }
@@ -76,11 +77,13 @@ public class Login extends Register{
         return id_permission;
     }
 
-    public ArrayList<ArrayList<Double>> getListLog() {
+    public static ArrayList<ArrayList<Double>> getListLog() {
         return listLog;
     }
 
-//    public static void setBank_balance(double bank_balance) {
+
+
+    //    public static void setBank_balance(double bank_balance) {
 //        Login.bank_balance = bank_balance;
 //    }
 //
