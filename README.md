@@ -1,3 +1,3 @@
 # sistema_bancario_java
  
--Tenho que implementar solid.
+-Tenho que implementar SOLID.
